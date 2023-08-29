@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary" style="text-align: center;">
+    <ion-title >
+      Software ABC
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+  <form #form="ngForm" (ngSubmit)="cadastro(form)" >
+    <ion-input label="Produto" label-placement="floating"  placeholder="Informe o seu produto" type="text" name="produto" ngModel required ></ion-input>
+    <ion-input label="Quantidade" label-placement="floating"  placeholder="Informe a quantidade" type="text" name="quantidade" ngModel required ></ion-input>
+    <ion-button color="tertiary"  type="submit"  expand="block" [disabled]="form.invalid"  shape="round">{{ nameButton }}</ion-button>
+  </form>
+</ion-card-header>
+</ion-card>
+
+ 
+  <ion-card>
+    <h2><strong>Produtos: </strong></h2>
+    <ion-card-header>
+  
+
+<ion-list lines="inset" *ngFor="let produto of meusProdutos">
+  <ion-item>
+    <ion-label>{{ produto.produto }}  {{ produto.quantidade}} </ion-label>
+    <ion-button  expand="block" shape="round" (click)="deletar(produto.id)" color="tertiary">Deletar</ion-button>
+  </ion-item>
+</ion-list>
+</ion-card-header>
+</ion-card>
+
+
+
+
+</ion-content>
